@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickKasir - Aplikasi Kasir</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>QuickKasir</h1>
+      <p>Aplikasi Kasir Sederhana</p>
+    </div>
+    <div class="clock" id="clock"></div>
+  </header>
+
+  <main class="container">
+    <section class="products">
+      <div class="section-title">
+        <h2>Daftar Produk</h2>
+        <input id="search" type="search" placeholder="Cari produk...">
+      </div>
+      <div id="productList" class="product-grid"></div>
+    </section>
+
+    <aside class="cart-panel">
+      <div class="section-title">
+        <h2>Keranjang</h2>
+        <button class="clear-btn" onclick="clearCart()">Kosongkan</button>
+      </div>
+      <div id="cartList" class="cart-list">
+        <div class="empty">Keranjang masih kosong</div>
+      </div>
+
+      <div class="summary">
+        <div><span>Subtotal</span><strong id="subtotal">Rp0</strong></div>
+        <div><span>Diskon</span><strong id="discount">Rp0</strong></div>
+        <div class="total"><span>Total</span><strong id="total">Rp0</strong></div>
+      </div>
+
+      <label>Diskon (%)</label>
+      <input id="discountInput" type="number" min="0" max="100" value="0" oninput="renderCart()">
+
+      <label>Metode Pembayaran</label>
+      <div class="payment-methods">
+        <button class="pay active" data-method="Cash">Cash</button>
+        <button class="pay" data-method="Transfer">Transfer</button>
+      </div>
+
+      <div id="cashBox">
+        <label>Uang Dibayar</label>
+        <input id="cashInput" type="number" min="0" placeholder="Contoh: 50000" oninput="updateChange()">
+        <div class="change">Kembalian: <strong id="change">Rp0</strong></div>
+      </div>
+
+      <button class="checkout" onclick="checkout()">Bayar & Cetak Struk</button>
+    </aside>
+  </main>
+
+  <div id="receiptModal" class="modal hidden">
+    <div class="receipt">
+      <button class="close" onclick="closeReceipt()">×</button>
+      <div id="receiptContent"></div>
+      <button class="print-btn" onclick="window.print()">Cetak Struk</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
